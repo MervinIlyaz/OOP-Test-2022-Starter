@@ -40,8 +40,6 @@ public class Nematode {
         pa.fill(255);
         pa.textSize(50);
         pa.textAlign(PApplet.CENTER, PApplet.CENTER);
-        pa.text(name, pa.width / 2, pa.height - (pa.border * 0.5f));
-        pa.textSize(16);
         pa.text(name, 100, 200);
     }
 
