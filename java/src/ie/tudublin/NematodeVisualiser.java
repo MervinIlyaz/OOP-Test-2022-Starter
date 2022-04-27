@@ -6,18 +6,35 @@ import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+
 public class NematodeVisualiser extends PApplet
 {
 
 	ArrayList<Nematode> nematodes = new ArrayList<Nematode>();
 	public float border;
 
+	Minim minim;
+    AudioPlayer ap;
+    AudioInput ai;
+    AudioBuffer ab;
+
 	public void keyPressed()
 	{		
 		if (keyCode == LEFT)
 		{
 
-		}		
+		}
+		
+		if (ap.isPlaying()) {
+			ap.pause();
+		} else {
+			ap.rewind();
+			ap.play();
+		}
 	}
 
 
@@ -31,7 +48,11 @@ public class NematodeVisualiser extends PApplet
 		colorMode(HSB);
 		background(0);
 		smooth();	
-		loadNematodes();			
+		loadNematodes();
+		minim = new Minim(this);
+		ap = minim.loadFile("Sandstorm.wav", 800);
+		ap.play();
+        ab = ap.mix;			
 	}
 	
 

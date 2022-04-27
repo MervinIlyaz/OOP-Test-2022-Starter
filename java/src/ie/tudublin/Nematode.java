@@ -10,6 +10,9 @@ public class Nematode {
     private String gender;
     private boolean eyes;
     
+    private int width;
+    private int height;
+    
     
     
     @Override
@@ -37,11 +40,28 @@ public class Nematode {
     public void render(NematodeVisualiser pa){
 
         //Print the name of the nematode
+        float x = pa.height / 2;
+        float y = pa.width - 200;
+        
         pa.fill(255);
         pa.textSize(50);
         pa.textAlign(PApplet.CENTER, PApplet.CENTER);
-        pa.text(name, 100, 200);
-    }
+        pa.text(name, x - 50 , y - 500);
+        for(int i = 0; i < length ; i++)
+        {
+            pa.stroke(255);
+            pa.noFill();
+            pa.circle(x,y,50);
+
+
+            if (isLimbs())
+            {
+                pa.line(x - 25, y, x - 50, y);
+                pa.line(x + 25, y, x + 50, y);
+            }
+
+            y = y - 50;
+        }    }
 
     public String getName() {
         return name;
